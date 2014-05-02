@@ -26,10 +26,24 @@ function init() {
 	floor.receiveShadow = true;
 	scene.add(floor);
 	
-	//ADDING SHELF Geometry
-	//first making lowest shelf on ground level
+	//using objloader to get coke can
+	
+	var loader = new THREE.OBJLoader();
+	var cokeGeom = loader.load('objects/coke.obj',function(object){
+	object.scale.set(.005,.005,.005);
+	object.position.x = 38;
+	object.position.y = 1;
+	for(var t = 0; t <= 10; t+=2){
+	object.position.z = -20+t;
+	scene.add(object);}
+	});
+//	var cokeTexture = new THREE.MeshBasicMaterial({ map: loadAndRender('images/coke.jpg') });
+//	var coke = new THREE.Mesh(cokeGeom, cokeTexture);
+//	scene.add(coke);
+	
+	//Shelf Geometry
+	//lowest shelf on ground level
 	var shelfLowGeometry = new THREE.CubeGeometry(180, 1, 28);
-	//var shelfLowMaterial = new THREE.MeshBasicMaterial({color: 0xCD853F});
 	var shelfLowMaterial = new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') });
 	var shelfLow = new THREE.Mesh(shelfLowGeometry, shelfLowMaterial);
 	//positioning shelf
@@ -62,7 +76,7 @@ function init() {
 	var shelfBackMaterial = new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') });
 	var shelfBack = new THREE.Mesh(shelfBackGeometry, shelfBackMaterial);
 	//positioning back piece
-	shelfBack.position.set(0, 16, -27);
+	shelfBack.position.set(0, 20, -27);
 	//adding the shelf to the scene
 	scene.add(shelfBack);
     
