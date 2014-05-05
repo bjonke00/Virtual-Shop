@@ -247,3 +247,4 @@ function render() {
 function loadAndRender(filename) {
 	return THREE.ImageUtils.loadTexture(filename, {}, render);
 }
+// last project
