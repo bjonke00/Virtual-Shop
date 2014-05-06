@@ -26,21 +26,49 @@ function init() {
 	floor.receiveShadow = true;
 	scene.add(floor);
 	
-	//using objloader to get coke can
+	//objmtloader to load one isle
+	var loader = new THREE.OBJMTLLoader();
+	loader.load("./objects/myshop2.obj","./objects/myshop2.mtl",function(object){
+	object.scale.set(.5,.5,.5);
+	object.position.x = 5;
+	object.position.y = -1.5;
+	object.position.z = -30;
+	scene.add(object)});
+	/*
+	//json loader
 	
-	var loader = new THREE.OBJLoader();
-	var cokeGeom = loader.load('objects/coke.obj',function(object){
-	object.scale.set(.005,.005,.005);
-	object.position.x = 38;
-	object.position.y = 1;
-	for(var t = 0; t <= 10; t+=2){
-	object.position.z = -20+t;
-	scene.add(object);}
+	function addObjects() {
+  var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'objects/misc_chair01_col.jpg' ) } );
+  var loader = new THREE.JSONLoader();
+  loader.load( { model: 'objects/misc_chair01.js', callback: function ( geometry ) {
+      geometry.computeTangents();
+
+      mesh = new THREE.Mesh( geometry, material );
+      mesh.position.x = mesh.position.y = mesh.position.z = 5;
+      mesh.rotation.x = mesh.rotation.y = mesh.rotation.z = 0;
+      mesh.scale.x = mesh.scale.y = mesh.scale.z = 50;
+      mesh.matrixAutoUpdate = false;
+      mesh.updateMatrix();
+      group.addChild(mesh);
+  } } );
+
+  // Finally when we are done loading our objects we need to add the group to the scene.
+  scene.addObject( group );
+}
+	
+	
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/misc_chair01.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
+	mesh.scale.set(25,25,25);
+	mesh.position.x = 0;
+	mesh.position.y = 8;
+	mesh.position.z = 0;
+	
+	scene.add(mesh);
 	});
-//	var cokeTexture = new THREE.MeshBasicMaterial({ map: loadAndRender('images/coke.jpg') });
-//	var coke = new THREE.Mesh(cokeGeom, cokeTexture);
-//	scene.add(coke);
-	
+	*/
+	/*
 	//Shelf Geometry
 	//lowest shelf on ground level
 	var shelfLowGeometry = new THREE.CubeGeometry(180, 1, 28);
@@ -49,7 +77,7 @@ function init() {
 	//positioning shelf
 	shelfLow.position.set(0,0,-12);
 	//adding the shelf to the scene
-	scene.add(shelfLow);
+	//scene.add(shelfLow);
 	
 	//middle shelf
 	var shelfMidGeometry = new THREE.CubeGeometry(180, 1, 28);
@@ -59,7 +87,7 @@ function init() {
 	//positioning shelf
 	shelfMid.position.set(0,13,-12);
 	//adding the shelf to the scene
-	scene.add(shelfMid);
+	//scene.add(shelfMid);
 	
 	//top shelf
 	var shelfTopGeometry = new THREE.CubeGeometry(180, 1, 28);
@@ -69,7 +97,7 @@ function init() {
 	//positioning shelf
 	shelfTop.position.set(0,26,-12);
 	//adding the shelf to the scene
-	scene.add(shelfTop);
+	//scene.add(shelfTop);
 
 	//back part of shelf
 	var shelfBackGeometry = new THREE.CubeGeometry(180, 45, 1);//72
@@ -78,7 +106,7 @@ function init() {
 	//positioning back piece
 	shelfBack.position.set(0, 20, -27);
 	//adding the shelf to the scene
-	scene.add(shelfBack);
+	//scene.add(shelfBack);
     
 	//Done adding shelf geometry
 	
@@ -117,7 +145,7 @@ var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example 
 	var RboxesMesh = new THREE.Mesh(Rboxes, new THREE.MeshFaceMaterial(labeling));
 	RboxesMesh.castShadow = false;
 	RboxesMesh.receiveShadow = true;
-	scene.add(RboxesMesh);
+	//scene.add(RboxesMesh);
 
 	
 	
@@ -142,7 +170,7 @@ var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example 
 	var cerealsMesh = new THREE.Mesh(cereals, new THREE.MeshFaceMaterial(materials));
 	cerealsMesh.castShadow = false;
 	cerealsMesh.receiveShadow = true;
-	scene.add(cerealsMesh);
+	//scene.add(cerealsMesh);
 
 	var soupGeom = new THREE.Geometry();
 	var soupLids = new THREE.Geometry();
@@ -179,13 +207,13 @@ var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example 
 	var soupLidMesh = new THREE.Mesh(soupLids, new THREE.MeshPhongMaterial( { map: loadAndRender('images/soup_top.jpg') } ));
 	soupLidMesh.castShadow = false;
 	soupLidMesh.receiveShadow = true;
-	scene.add(soupLidMesh);
+	//scene.add(soupLidMesh);
 	
 	var soupCanMesh = new THREE.Mesh(soupGeom, new THREE.MeshPhongMaterial( { map: loadAndRender('images/soup.jpg') } ));
 	soupCanMesh.castShadow = false;
 	soupCanMesh.receiveShadow = true;
-	scene.add(soupCanMesh);
-
+	//scene.add(soupCanMesh);
+*/
 	//Lighting
 	light = new THREE.AmbientLight( "white" );
 	scene.add( light );
@@ -247,4 +275,3 @@ function render() {
 function loadAndRender(filename) {
 	return THREE.ImageUtils.loadTexture(filename, {}, render);
 }
-// last project
