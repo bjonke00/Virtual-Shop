@@ -1,13 +1,18 @@
 var container;
 var camera, controls, scene, renderer;
 
+//mouseclick var
+var targetList = [];
+var projector, mouse = { x: 0, y: 0 };
+
 init();
 animate();
-
+window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/index.html");
 function init() {
-	camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, .1, 1000);  //Camera Position
-	camera.position.z =110;
-	camera.position.y = 20;
+	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);  //Camera Position
+	//camera.position.x =20;
+	camera.position.z =50;
+	camera.position.y = 15;
 	
 	controls = new THREE.OrbitControls( camera );
 	controls.addEventListener( 'change', render );
@@ -15,7 +20,7 @@ function init() {
 	
 	scene = new THREE.Scene();
 
-	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/floor_tile.jpg' );
+	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/browntile.jpg' );
 	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 	floorTexture.repeat.set( 100, 100 );
 	var floorMaterial = new THREE.MeshPhongMaterial( { map: floorTexture, side: THREE.DoubleSide } );
@@ -26,48 +31,414 @@ function init() {
 	floor.receiveShadow = true;
 	scene.add(floor);
 	
+	
 	//objmtloader to load one isle
 	var loader = new THREE.OBJMTLLoader();
-	loader.load("./objects/myshop2.obj","./objects/myshop2.mtl",function(object){
+	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
 	object.scale.set(.5,.5,.5);
-	object.position.x = 5;
+	object.position.x = -70;
 	object.position.y = -1.5;
 	object.position.z = -30;
 	scene.add(object)});
-	/*
-	//json loader
+	var loader = new THREE.OBJMTLLoader();
+	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
+	object.scale.set(.5,.5,.5);
+	object.position.x = -35;
+	object.position.y = -1.5;
+	object.position.z = -30;
+	scene.add(object)});
+	var loader = new THREE.OBJMTLLoader();
+	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
+	object.scale.set(.5,.5,.5);
+	object.position.x = 0;
+	object.position.y = -1.5;
+	object.position.z = -30;
+	scene.add(object)});
+	var loader = new THREE.OBJMTLLoader();
+	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
+	object.scale.set(.5,.5,.5);
+	object.position.x = 35;
+	object.position.y = -1.5;
+	object.position.z = -30;
+	scene.add(object)});
+	var loader = new THREE.OBJMTLLoader();
+	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
+	object.scale.set(.5,.5,.5);
+	object.position.x = 70;
+	object.position.y = -1.5;
+	object.position.z = -30;
+	scene.add(object)});
 	
-	function addObjects() {
-  var material = new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'objects/misc_chair01_col.jpg' ) } );
-  var loader = new THREE.JSONLoader();
-  loader.load( { model: 'objects/misc_chair01.js', callback: function ( geometry ) {
-      geometry.computeTangents();
-
-      mesh = new THREE.Mesh( geometry, material );
-      mesh.position.x = mesh.position.y = mesh.position.z = 5;
-      mesh.rotation.x = mesh.rotation.y = mesh.rotation.z = 0;
-      mesh.scale.x = mesh.scale.y = mesh.scale.z = 50;
-      mesh.matrixAutoUpdate = false;
-      mesh.updateMatrix();
-      group.addChild(mesh);
-  } } );
-
-  // Finally when we are done loading our objects we need to add the group to the scene.
-  scene.addObject( group );
-}
-	
-	
+	//lays chips (red)
 	var loader = new THREE.JSONLoader();
-	loader.load("./objects/misc_chair01.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
-	mesh.scale.set(25,25,25);
-	mesh.position.x = 0;
-	mesh.position.y = 8;
-	mesh.position.z = 0;
+	loader.load("./objects/laysred.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 45;
+	mesh.position.y = 3;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/laysred.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 48;
+	mesh.position.y = 3;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/laysred.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 51;
+	mesh.position.y = 3;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/laysred.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 54;
+	mesh.position.y = 3;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
 	
+	//lays blue
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/laysblue.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 36;
+	mesh.position.y = -9.5;
+	mesh.position.z = -32;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/laysblue.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 39;
+	mesh.position.y = -9.5;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/laysblue.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 42;
+	mesh.position.y = -9.5;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/laysblue.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 45;
+	mesh.position.y = -9.5;
+	mesh.position.z = -32;
+	scene.add(mesh);
+	});
+	
+	//chips (black)
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/chipsblack.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 58;
+	mesh.position.y = -10;
+	mesh.position.z = -13;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/chipsblack.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 61;
+	mesh.position.y = -10;
+	mesh.position.z = -13;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/chipsblack.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 64;
+	mesh.position.y = -10;
+	mesh.position.z = -13;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/chipsblack.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 67;
+	mesh.position.y = -10;
+	mesh.position.z = -13;
+	scene.add(mesh);
+	});
+	
+	// chips (orange)
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/chipsorange.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 68;
+	mesh.position.y = -5.5;
+	mesh.position.z = -19.5;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/chipsorange.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 71;
+	mesh.position.y = -5.5;
+	mesh.position.z = -19.5;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/chipsorange.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 74;
+	mesh.position.y = -5.5;
+	mesh.position.z = -19.5;
+	scene.add(mesh);
+	});
+	
+	//pretzels
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pretzels.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = -5;
+	mesh.position.y = 5.5;
+	mesh.position.z = -49;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pretzels.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = -2;
+	mesh.position.y = 5.5;
+	mesh.position.z = -49;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pretzels.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 1;
+	mesh.position.y = 5.5;
+	mesh.position.z = -49;
+	scene.add(mesh);
+	});
+	
+	//Cracker Jacks
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/crackerjack.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 75;
+	mesh.position.y = 12;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/crackerjack.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 80;
+	mesh.position.y = 12;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+
+	
+	//peanuts
+	/*
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/peanuts.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 15;
+	mesh.position.y = -12;
+	mesh.position.z = -49;
+	scene.add(mesh);
+	});
+	loader.load("./objects/lids.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ map: loadAndRender('images/lid.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 15;
+	mesh.position.y = -12;
+	mesh.position.z = -49;
 	scene.add(mesh);
 	});
 	*/
+	
+	//pringles (green)
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringles.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 45;
+	mesh.position.y = -6.7;
+	mesh.position.z = -21;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringles.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 47;
+	mesh.position.y = -6.7;
+	mesh.position.z = -21;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringles.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 49;
+	mesh.position.y = -6.7;
+	mesh.position.z = -21;
+	scene.add(mesh);
+	});
+	
+	//pringles blue
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringlesbl.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	pr_blue = mesh;
+	pr_blue.scale.set(.5,.5,.5);
+	pr_blue.position.x = -33;
+	pr_blue.position.y = -4.8;
+	pr_blue.position.z = -33;
+	scene.add(pr_blue);
+	targetList.push(pr_blue);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringlesbl.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	pr_blue = mesh;
+	pr_blue.scale.set(.5,.5,.5);
+	pr_blue.position.x = -30;
+	pr_blue.position.y = -4.8;
+	pr_blue.position.z = -34;
+	scene.add(pr_blue);
+	targetList.push(pr_blue);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringlesbl.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	pr_blue = mesh;
+	pr_blue.scale.set(.5,.5,.5);
+	pr_blue.position.x = -28;
+	pr_blue.position.y = -4.8;
+	pr_blue.position.z = -33;
+	scene.add(pr_blue);
+	targetList.push(pr_blue);
+	});	
+	
+	//pringles (red)
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringlesgr.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 60;
+	mesh.position.y = -5.8;
+	mesh.position.z = -23;
+	scene.add(mesh);
+	});
+		var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringlesgr.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 62;
+	mesh.position.y = -5.8;
+	mesh.position.z = -23;
+	scene.add(mesh);
+	});
+		var loader = new THREE.JSONLoader();
+	loader.load("./objects/pringlesgr.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 64;
+	mesh.position.y = -5.8;
+	mesh.position.z = -23;
+	scene.add(mesh);
+	});
+	
+	//frosted flakes
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/frosted.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 4;
+	mesh.position.y = .8;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/frosted.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 8;
+	mesh.position.y = .8;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/frosted.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 12;
+	mesh.position.y = .8;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+
+	//raisin brand
+	
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/raisin.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
+	r = mesh;
+	r.scale.set(.5,.5,.5);
+	r.position.x = 5;
+	r.position.y = -7;
+	r.position.z = -24;
+	scene.add(r);
+	//targetList.push(r);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/raisin.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 9;
+	mesh.position.y = -7;
+	mesh.position.z = -24;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/raisin.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 13;
+	mesh.position.y = -7;
+	mesh.position.z = -24;
+	scene.add(mesh);
+	});	
+	
 	/*
 	//Shelf Geometry
 	//lowest shelf on ground level
@@ -108,32 +479,17 @@ function init() {
 	//adding the shelf to the scene
 	//scene.add(shelfBack);
     
-	//Done adding shelf geometry
-	
-	//ADDING A SPHERE
-	    var sphereGeometry = new THREE.SphereGeometry(2,10,10);
-        var sphereMaterial = new THREE.MeshBasicMaterial({ map: loadAndRender('images/orange3.jpg') });
-        var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
-
-        // position the sphere
-        sphere.position.x= 30;
-        sphere.position.y= 2;
-        sphere.position.z= 0;
-		
-        // add the sphere to the scene
-		//scene.add(sphere);
-
-	//DONE ADDING SPHERE
+*/
 	
 	var Rboxes = new THREE.Geometry(); // Many Reeses boxes
-var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example of Reeses box
+	var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example of Reeses box
 
-	for (var t = 0; t <= 26; t+=13){
-	for (var n = 0; n <= 16; n+=8){
-	for (var i = 0; i < 7; i++) {
-		Rbox.position.set(-32-n,6+t,-i*4);
+	for (var t = 0; t <= 8; t+=4){
+	for (var n = 0; n <= 3; n+=1.5){
+		Rbox.scale.set(.5,.5,.5);
+		Rbox.position.set(32+t,28,-15-n);
 		THREE.GeometryUtils.merge( Rboxes, Rbox );
-	}}}
+	}}
 	var labeling = [
 	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_left.jpg') } ),
 	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_right.jpg') } ),
@@ -145,19 +501,20 @@ var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example 
 	var RboxesMesh = new THREE.Mesh(Rboxes, new THREE.MeshFaceMaterial(labeling));
 	RboxesMesh.castShadow = false;
 	RboxesMesh.receiveShadow = true;
-	//scene.add(RboxesMesh);
+	scene.add(RboxesMesh);
+	//targetList.push(RboxesMesh);
 
 	
 	
 	var cereals = new THREE.Geometry();
 	var cereal = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) );
 	
-	for (var t = 0; t <= 26; t+=13){
-	for (var n = 0; n <= 24; n+=8){
-	for (var i = 0; i < 7; i++) {
-		cereal.position.set(0-n,6+t,-i*4);
+	for (var t = 0; t <= 8; t+=4){
+	for (var n = 0; n <= 3; n+=1.5){
+		cereal.scale.set(.5,.5,.5);
+		cereal.position.set(32+t,21,-15-n);
 		THREE.GeometryUtils.merge( cereals, cereal );
-	}}}
+	}}
 	var materials = [
 	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_left.jpg') } ),
 	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_right.jpg') } ),
@@ -170,54 +527,37 @@ var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example 
 	var cerealsMesh = new THREE.Mesh(cereals, new THREE.MeshFaceMaterial(materials));
 	cerealsMesh.castShadow = false;
 	cerealsMesh.receiveShadow = true;
-	//scene.add(cerealsMesh);
+	scene.add(cerealsMesh);
 
-	var soupGeom = new THREE.Geometry();
-	var soupLids = new THREE.Geometry();
 
-	//var soupLid = new THREE.Mesh(circleGeometry(2,60));
-	var soupLid = new THREE.Mesh(new THREE.CircleGeometry(2,60));
-	//soupLid.rotation.set(Math.PI,0,0);
-	var soup = new THREE.Mesh( new THREE.CylinderGeometry( 2, 2, 4.5, 60, 1, true ));
-
-	var yRot = 0;
-	var x = 0;
-	var xoff = 7;
-
-	for (var n = 0; n < 9; n+=4.5){
-	for (var i = 0; i < 5; i++) {
-		for (var j = 0; j < 5; j++) {
-			x = xoff+j*4.5;
-			yRot = Math.random() * Math.PI;
-			soup.position.set(x,3+n,-5*i);
-			soup.rotation.set(0, yRot, 0);
-			THREE.GeometryUtils.merge( soupGeom, soup );
-
-			soupLid.position.set(x,5.25+n,-5*i);
-			soupLid.rotation.set(3*Math.PI/2,0,yRot);
-			THREE.GeometryUtils.merge( soupLids, soupLid );
-
-			//soupLid.position.set(x,0,-5*i);
-			//soupLid.rotation.set(0,yRot,0);
-			THREE.GeometryUtils.merge( soupLids, soupLid );
-		}
-	}
-	}
+//mouse
+/*
+var faceColorMaterial = new THREE.MeshBasicMaterial( 
+	{ color: 0xffffff, vertexColors: THREE.FaceColors } );
 	
-	var soupLidMesh = new THREE.Mesh(soupLids, new THREE.MeshPhongMaterial( { map: loadAndRender('images/soup_top.jpg') } ));
-	soupLidMesh.castShadow = false;
-	soupLidMesh.receiveShadow = true;
-	//scene.add(soupLidMesh);
+	var sphereGeometry = new THREE.SphereGeometry( 80, 32, 16 );
+	for ( var i = 0; i < sphereGeometry.faces.length; i++ ) 
+	{
+		face = sphereGeometry.faces[ i ];	
+		face.color.setRGB( 0, 0, 0.8 * Math.random() + 0.2 );		
+	}
+var sphere = new THREE.Mesh( sphereGeometry, faceColorMaterial );
+	sphere.position.set(0, 10, -25);
+	scene.add(sphere);
+*/	
+	//targetList.push(r);
 	
-	var soupCanMesh = new THREE.Mesh(soupGeom, new THREE.MeshPhongMaterial( { map: loadAndRender('images/soup.jpg') } ));
-	soupCanMesh.castShadow = false;
-	soupCanMesh.receiveShadow = true;
-	//scene.add(soupCanMesh);
-*/
+	// initialize object to perform world/screen calculations
+	projector = new THREE.Projector();
+	
+	// when the mouse moves, call the given function
+	document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+	
+	
 	//Lighting
 	light = new THREE.AmbientLight( "white" );
 	scene.add( light );
-	
+
 	var light = new THREE.SpotLight("white");
 	light.position.set(-150,40,0);
 	light.castShadow = true;
@@ -250,6 +590,35 @@ var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example 
 	stats.domElement.style.bottom = '0px';
 	stats.domElement.style.zIndex = 100;
 	container.appendChild( stats.domElement );
+
+}
+//mouse function
+function onDocumentMouseDown( event ) 
+{
+	// the following line would stop any other event handler from firing
+	// (such as the mouse's TrackballControls)
+	// event.preventDefault();
+	console.log("Click.");
+	// update the mouse variable
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+	// find intersections
+	// create a Ray with origin at the mouse position
+	//   and direction into the scene (camera direction)
+	var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+	projector.unprojectVector( vector, camera );
+	var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
+	// create an array containing all objects in the scene with which the ray intersects
+	var intersects = ray.intersectObjects( targetList, true );
+	// if there is one (or more) intersections
+	if ( intersects.length > 0 )
+	{
+		window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesbl.html");
+		//console.log("Hit @ " + toString( intersects[0].point ) );
+		// change the color of the closest face.
+		//intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
+		//intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+	}
 
 }
 
