@@ -32,8 +32,55 @@ function init() {
 	scene.add(floor);
 	
 	
+	//shelves (wood texture)
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/shelf.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = -70;
+	mesh.position.y = -1.5;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/shelf.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = -35;
+	mesh.position.y = -1.5;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});/*
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/shelf.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 0;
+	mesh.position.y = -1.5;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/shelf.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 35;
+	mesh.position.y = -1.5;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});
+	var loader = new THREE.JSONLoader();
+	loader.load("./objects/shelf.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
+	mesh.scale.set(.5,.5,.5);
+	mesh.position.x = 70;
+	mesh.position.y = -1.5;
+	mesh.position.z = -30;
+	scene.add(mesh);
+	});*/
+	
 	//objmtloader to load one isle
-	var loader = new THREE.OBJMTLLoader();
+/*	var loader = new THREE.OBJMTLLoader();
 	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
 	object.scale.set(.5,.5,.5);
 	object.position.x = -70;
@@ -46,7 +93,7 @@ function init() {
 	object.position.x = -35;
 	object.position.y = -1.5;
 	object.position.z = -30;
-	scene.add(object)});
+	scene.add(object)});*/
 	var loader = new THREE.OBJMTLLoader();
 	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
 	object.scale.set(.5,.5,.5);
