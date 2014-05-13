@@ -28,7 +28,7 @@ function init() {
 	scene.add(floor);
 	*/
 	var loader = new THREE.JSONLoader();
-	loader.load("./objects/pringlesgr.js", function(geometry){
+	loader.load("./objects/pringlesgrsingle.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
 	//mesh.scale.set(5,5,5);
 	mesh.position.x = 115;

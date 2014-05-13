@@ -334,29 +334,36 @@ function init() {
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringles.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 45;
-	mesh.position.y = -6.7;
-	mesh.position.z = -21;
-	scene.add(mesh);
+	pr_green = mesh;
+	pr_green.scale.set(.5,.5,.5);
+	pr_green.position.x = 45;
+	pr_green.position.y = -6.7;
+	pr_green.position.z = -21;
+	scene.add(pr_green);
+	targetList.push(pr_green);
+	item=2;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringles.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 47;
-	mesh.position.y = -6.7;
-	mesh.position.z = -21;
-	scene.add(mesh);
+	pr_green = mesh;
+	pr_green.scale.set(.5,.5,.5);
+	pr_green.position.x = 47;
+	pr_green.position.y = -6.7;
+	pr_green.position.z = -21;
+	scene.add(pr_green);
+	targetList.push(pr_green);
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringles.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 49;
-	mesh.position.y = -6.7;
-	mesh.position.z = -21;
-	scene.add(mesh);
+	pr_green = mesh;
+	pr_green.scale.set(.5,.5,.5);
+	pr_green.position.x = 49;
+	pr_green.position.y = -6.7;
+	pr_green.position.z = -21;
+	scene.add(pr_green);
+	targetList.push(pr_green);
 	});
 	
 	//pringles blue
@@ -370,6 +377,7 @@ function init() {
 	pr_blue.position.z = -33;
 	scene.add(pr_blue);
 	targetList.push(pr_blue);
+	item =0;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesbl.js", function(geometry){
@@ -398,29 +406,36 @@ function init() {
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 60;
-	mesh.position.y = -5.8;
-	mesh.position.z = -23;
-	scene.add(mesh);
+	pr_red = mesh;
+	pr_red.scale.set(.5,.5,.5);
+	pr_red.position.x = 60;
+	pr_red.position.y = -5.8;
+	pr_red.position.z = -23;
+	scene.add(pr_red);
+	targetList.push(pr_red);
+	item =1;
 	});
 		var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 62;
-	mesh.position.y = -5.8;
-	mesh.position.z = -23;
-	scene.add(mesh);
+	pr_red = mesh;
+	pr_red.scale.set(.5,.5,.5);
+	pr_red.position.x = 62;
+	pr_red.position.y = -5.8;
+	pr_red.position.z = -23;
+	scene.add(pr_red);
+	targetList.push(pr_red);
 	});
 		var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 64;
-	mesh.position.y = -5.8;
-	mesh.position.z = -23;
-	scene.add(mesh);
+	pr_red = mesh;
+	pr_red.scale.set(.5,.5,.5);
+	pr_red.position.x = 64;
+	pr_red.position.y = -5.8;
+	pr_red.position.z = -23;
+	scene.add(pr_red);
+	targetList.push(pr_red);
 	});
 	
 	//frosted flakes
@@ -659,9 +674,19 @@ function onDocumentMouseUp( event )
 	// if there is one (or more) intersections
 	if ( intersects.length > 0 )
 	{
-		
+		switch (item) {
+			case 0:
+					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
+					break;
+			case 1:
+					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesgr.html"); //red pringles
+					break;
+			case 2:
+					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlessingle.html"); //green pringles
+					break;
+		}
 		//console.log("Hit @ " + toString( intersects[0].point ) );
-		window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesbl.html");
+		
 		// change the color of the closest face.
 		//intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
 		//intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
