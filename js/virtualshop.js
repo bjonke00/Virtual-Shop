@@ -598,8 +598,7 @@ var sphere = new THREE.Mesh( sphereGeometry, faceColorMaterial );
 	projector = new THREE.Projector();
 	
 	// when the mouse moves, call the given function
-	document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-	
+	document.addEventListener( 'mouseup', onDocumentMouseUp, false );
 	
 	//Lighting
 	light = new THREE.AmbientLight( "white" );
@@ -640,7 +639,7 @@ var sphere = new THREE.Mesh( sphereGeometry, faceColorMaterial );
 
 }
 //mouse function
-function onDocumentMouseDown( event ) 
+function onDocumentMouseUp( event ) 
 {
 	// the following line would stop any other event handler from firing
 	// (such as the mouse's TrackballControls)
@@ -660,8 +659,9 @@ function onDocumentMouseDown( event )
 	// if there is one (or more) intersections
 	if ( intersects.length > 0 )
 	{
-		window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesbl.html");
+		
 		//console.log("Hit @ " + toString( intersects[0].point ) );
+		window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesbl.html");
 		// change the color of the closest face.
 		//intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
 		//intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
