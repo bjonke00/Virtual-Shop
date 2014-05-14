@@ -12,13 +12,16 @@ var projector, mouse = { x: 0, y: 0 };
 //4 = raisin brand
 //5 = reeses cereal
 //6 = fruit loops 
+//7 = lays (red)
+//8 = lays (blue)
+//9 = chips (black)
+//10 = chips (orange)
+//11 = pretzels
+//12 = crackerjacks
 init();
 animate();
-<<<<<<< HEAD
-window.open("file:///C:/Users/Joel/Desktop/virtual-shop/index.html");
-=======
-window.open("file:///C:/Users/Joel/Desktop/virtual-shop/index.html");
->>>>>>> 0d0a4c180f790ae64304792af4b2966e8c3d63d4
+//window.open("file:///C:/Users/Joel/Desktop/virtual-shop/index.html");
+
 function init() {
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);  //Camera Position
 	//camera.position.x =20;
@@ -135,7 +138,9 @@ function init() {
 	mesh.position.x = 45;
 	mesh.position.y = 3;
 	mesh.position.z = -30;
-	scene.add(mesh);
+	scene.add(mesh)
+	targetList.push(mesh);
+	mesh.item=7;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysred.js", function(geometry){
@@ -145,6 +150,8 @@ function init() {
 	mesh.position.y = 3;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=7;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysred.js", function(geometry){
@@ -154,6 +161,8 @@ function init() {
 	mesh.position.y = 3;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=7;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysred.js", function(geometry){
@@ -163,6 +172,8 @@ function init() {
 	mesh.position.y = 3;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=7;
 	});
 	
 	//lays blue
@@ -174,6 +185,8 @@ function init() {
 	mesh.position.y = -9.5;
 	mesh.position.z = -32;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=8;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysblue.js", function(geometry){
@@ -183,6 +196,8 @@ function init() {
 	mesh.position.y = -9.5;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=8;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysblue.js", function(geometry){
@@ -192,6 +207,8 @@ function init() {
 	mesh.position.y = -9.5;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=8;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysblue.js", function(geometry){
@@ -201,6 +218,8 @@ function init() {
 	mesh.position.y = -9.5;
 	mesh.position.z = -32;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=8;
 	});
 	
 	//chips (black)
@@ -212,6 +231,8 @@ function init() {
 	mesh.position.y = -10;
 	mesh.position.z = -13;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=9;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/chipsblack.js", function(geometry){
@@ -221,6 +242,8 @@ function init() {
 	mesh.position.y = -10;
 	mesh.position.z = -13;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=9;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/chipsblack.js", function(geometry){
@@ -230,6 +253,8 @@ function init() {
 	mesh.position.y = -10;
 	mesh.position.z = -13;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=9;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/chipsblack.js", function(geometry){
@@ -239,6 +264,8 @@ function init() {
 	mesh.position.y = -10;
 	mesh.position.z = -13;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=9;
 	});
 	
 	// chips (orange)
@@ -250,6 +277,8 @@ function init() {
 	mesh.position.y = -5.5;
 	mesh.position.z = -19.5;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=10;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/chipsorange.js", function(geometry){
@@ -259,6 +288,8 @@ function init() {
 	mesh.position.y = -5.5;
 	mesh.position.z = -19.5;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=10;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/chipsorange.js", function(geometry){
@@ -268,6 +299,8 @@ function init() {
 	mesh.position.y = -5.5;
 	mesh.position.z = -19.5;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=10;
 	});
 	
 	//pretzels
@@ -279,6 +312,8 @@ function init() {
 	mesh.position.y = 5.5;
 	mesh.position.z = -49;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=11;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pretzels.js", function(geometry){
@@ -288,6 +323,8 @@ function init() {
 	mesh.position.y = 5.5;
 	mesh.position.z = -49;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=11;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pretzels.js", function(geometry){
@@ -297,6 +334,8 @@ function init() {
 	mesh.position.y = 5.5;
 	mesh.position.z = -49;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=11;
 	});
 	
 	//Cracker Jacks
@@ -308,6 +347,8 @@ function init() {
 	mesh.position.y = 12;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=12;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/crackerjack.js", function(geometry){
@@ -317,6 +358,8 @@ function init() {
 	mesh.position.y = 12;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	targetList.push(mesh);
+	mesh.item=12;
 	});
 	
 	//pringles (green)
@@ -343,7 +386,6 @@ function init() {
 	scene.add(pr_green);
 	pr_green.item=2;
 	//the above is a manual identifier to distinguish green pringles from everything else
-	//only needs to be put once per group of items. Ex: For all green pringles, the item code is 2.
 	//in order for the mouse click to work for the whole group, every item must enter the targetList array
 	targetList.push(pr_green);
 	});
@@ -357,6 +399,7 @@ function init() {
 	pr_green.position.z = -21;
 	scene.add(pr_green);
 	targetList.push(pr_green);
+	pr_green.item=2
 	});
 	
 	//pringles blue
@@ -385,6 +428,7 @@ function init() {
 	scene.add(pr_blue);
 	//add to the array
 	targetList.push(pr_blue);
+	pr_blue.item = 0;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesbl.js", function(geometry){
@@ -397,6 +441,7 @@ function init() {
 	scene.add(pr_blue);
 	//add to the array
 	targetList.push(pr_blue);
+	pr_blue.item = 0;
 	});	
 	
 	//pringles (red)
@@ -425,6 +470,7 @@ function init() {
 	scene.add(pr_red);
 	//add to the array
 	targetList.push(pr_red);
+	pr_red.item = 1;
 	});
 		var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
@@ -437,6 +483,7 @@ function init() {
 	scene.add(pr_red);
 	//add to the array
 	targetList.push(pr_red);
+	pr_red.item = 1;
 	});
 	
 	//frosted flakes
@@ -464,6 +511,7 @@ function init() {
 	scene.add(mesh);
 	//add to the array
 	targetList.push(mesh);
+	mesh.item = 3;
 	});
 	
 	var loader = new THREE.JSONLoader();
@@ -476,6 +524,7 @@ function init() {
 	scene.add(mesh);
 	//add to the array
 	targetList.push(mesh);
+	mesh.item = 3;
 	});
 
 	//raisin brand
@@ -504,6 +553,7 @@ function init() {
 	scene.add(mesh);
 	//add to the array
 	targetList.push(mesh);
+	mesh.item = 4;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/raisin.js", function(geometry){
@@ -514,6 +564,7 @@ function init() {
 	mesh.position.z = -24;
 	scene.add(mesh);
 	targetList.push(mesh);
+	mesh.item = 4;
 	});	
 	
 	/*
@@ -700,7 +751,6 @@ function onDocumentMouseUp( event )
 		var target = intersects[0].object;
 		switch (target.item) {
 			case 0:
-<<<<<<< HEAD
 					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
 					break;
 			case 1:
@@ -709,18 +759,35 @@ function onDocumentMouseUp( event )
 			case 2:
 					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlessingle.html"); //green pringles
 					break;
-			//case 3:
+			case 3:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/frosted.html");  //frosted flakes
+					break;
 			case 4:
 					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/raisin.html");  //raisin brand
-=======
-					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
 					break;
-			case 1:
-					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesgr.html"); //red pringles
+			case 5:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/reeses.html");  //reeses cereal
 					break;
-			case 2:
-					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlessingle.html"); //green pringles
->>>>>>> 0d0a4c180f790ae64304792af4b2966e8c3d63d4
+			case 6:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/fruitloops.html");  //fruit loops 
+					break;
+			case 7:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/laysred.html");  //red lays
+					break;
+			case 8:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/laysblue.html");  //blue lays
+					break;
+			case 9:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/chipsblack.html");  //black chips
+					break;
+			case 10:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/chipsorange.html");  //orange chips
+					break;
+			case 11:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pretzelsingle.html");  //pretzel bag
+					break;
+			case 12:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/crackerjack.html");  //cracker jacks
 					break;
 		}
 		//console.log("Hit @ " + toString( intersects[0].point ) );
