@@ -14,7 +14,11 @@ var projector, mouse = { x: 0, y: 0 };
 //6 = fruit loops 
 init();
 animate();
+<<<<<<< HEAD
 window.open("file:///C:/Users/Joel/Desktop/virtual-shop/index.html");
+=======
+window.open("file:///C:/Users/Joel/Desktop/virtual-shop/index.html");
+>>>>>>> 0d0a4c180f790ae64304792af4b2966e8c3d63d4
 function init() {
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);  //Camera Position
 	//camera.position.x =20;
@@ -314,28 +318,6 @@ function init() {
 	mesh.position.z = -30;
 	scene.add(mesh);
 	});
-
-	
-	//peanuts
-	/*
-	var loader = new THREE.JSONLoader();
-	loader.load("./objects/peanuts.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 15;
-	mesh.position.y = -12;
-	mesh.position.z = -49;
-	scene.add(mesh);
-	});
-	loader.load("./objects/lids.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ map: loadAndRender('images/lid.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 15;
-	mesh.position.y = -12;
-	mesh.position.z = -49;
-	scene.add(mesh);
-	});
-	*/
 	
 	//pringles (green)
 	var loader = new THREE.JSONLoader();
@@ -718,6 +700,7 @@ function onDocumentMouseUp( event )
 		var target = intersects[0].object;
 		switch (target.item) {
 			case 0:
+<<<<<<< HEAD
 					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
 					break;
 			case 1:
@@ -729,6 +712,15 @@ function onDocumentMouseUp( event )
 			//case 3:
 			case 4:
 					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/raisin.html");  //raisin brand
+=======
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
+					break;
+			case 1:
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesgr.html"); //red pringles
+					break;
+			case 2:
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlessingle.html"); //green pringles
+>>>>>>> 0d0a4c180f790ae64304792af4b2966e8c3d63d4
 					break;
 		}
 		//console.log("Hit @ " + toString( intersects[0].point ) );
