@@ -7,7 +7,7 @@ var projector, mouse = { x: 0, y: 0 };
 
 init();
 animate();
-window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/index.html");
+window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/index.html");
 function init() {
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);  //Camera Position
 	//camera.position.x =20;
@@ -307,28 +307,6 @@ function init() {
 	mesh.position.z = -30;
 	scene.add(mesh);
 	});
-
-	
-	//peanuts
-	/*
-	var loader = new THREE.JSONLoader();
-	loader.load("./objects/peanuts.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 15;
-	mesh.position.y = -12;
-	mesh.position.z = -49;
-	scene.add(mesh);
-	});
-	loader.load("./objects/lids.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({ map: loadAndRender('images/lid.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 15;
-	mesh.position.y = -12;
-	mesh.position.z = -49;
-	scene.add(mesh);
-	});
-	*/
 	
 	//pringles (green)
 	var loader = new THREE.JSONLoader();
@@ -676,13 +654,13 @@ function onDocumentMouseUp( event )
 	{
 		switch (item) {
 			case 0:
-					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
 					break;
 			case 1:
-					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesgr.html"); //red pringles
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesgr.html"); //red pringles
 					break;
 			case 2:
-					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlessingle.html"); //green pringles
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlessingle.html"); //green pringles
 					break;
 		}
 		//console.log("Hit @ " + toString( intersects[0].point ) );

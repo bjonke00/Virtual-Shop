@@ -27,21 +27,34 @@ function init() {
 	floor.receiveShadow = true;
 	scene.add(floor);
 	*/
-	var loader = new THREE.JSONLoader();
-	loader.load("./objects/raisinsingle.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
-	//mesh.scale.set(5,5,5);
-	mesh.position.x = -50;
-	mesh.position.y = -25;
-	mesh.position.z = -20;
-	scene.add(mesh);
-	});
+		//fruit loops
+	var cereals = new THREE.Geometry();
+	var cereal = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) );
+	
+	
+		//cereal.scale.set(.5,.5,.5);
+		cereal.position.set(0,0,0);
+		THREE.GeometryUtils.merge( cereals, cereal );
+
+	var materials = [
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_left.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_right.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_top.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_bottom.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_front.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/cereal_back.jpg') } ) 
+	];
+	
+	var cerealsMesh = new THREE.Mesh(cereals, new THREE.MeshFaceMaterial(materials));
+	cerealsMesh.castShadow = false;
+	cerealsMesh.receiveShadow = true;
+	scene.add(cerealsMesh);
 	
 	light = new THREE.AmbientLight( "white" );
 	scene.add( light );
 
 	var light = new THREE.SpotLight("white");
-	light.position.set(-150,40,0);
+	light.position.set(-150,30,0);
 	light.castShadow = true;
 	light.shadowCameraVisible = false;
 	scene.add(light);

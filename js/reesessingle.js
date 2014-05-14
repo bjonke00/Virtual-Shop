@@ -27,21 +27,32 @@ function init() {
 	floor.receiveShadow = true;
 	scene.add(floor);
 	*/
-	var loader = new THREE.JSONLoader();
-	loader.load("./objects/raisinsingle.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
-	//mesh.scale.set(5,5,5);
-	mesh.position.x = -50;
-	mesh.position.y = -25;
-	mesh.position.z = -20;
-	scene.add(mesh);
-	});
+		//reeses puffs
+	var Rboxes = new THREE.Geometry(); // Many Reeses boxes
+	var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example of Reeses box
+
+		//Rbox.scale.set(.5,.5,.5);
+		Rbox.position.set(0,0,0);
+		THREE.GeometryUtils.merge( Rboxes, Rbox );
+
+	var labeling = [
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_left.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_right.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_top.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_bottom.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_front.jpg') } ),
+	    new THREE.MeshPhongMaterial( { map: loadAndRender('images/reeses_back.jpg') } ) 
+	];
+	var RboxesMesh = new THREE.Mesh(Rboxes, new THREE.MeshFaceMaterial(labeling));
+	RboxesMesh.castShadow = false;
+	RboxesMesh.receiveShadow = true;
+	scene.add(RboxesMesh);
 	
 	light = new THREE.AmbientLight( "white" );
 	scene.add( light );
 
 	var light = new THREE.SpotLight("white");
-	light.position.set(-150,40,0);
+	light.position.set(-150,30,0);
 	light.castShadow = true;
 	light.shadowCameraVisible = false;
 	scene.add(light);

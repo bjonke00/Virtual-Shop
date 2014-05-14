@@ -28,12 +28,12 @@ function init() {
 	scene.add(floor);
 	*/
 	var loader = new THREE.JSONLoader();
-	loader.load("./objects/raisinsingle.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
+	loader.load("./objects/chipsblacksingle.js", function(geometry){
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
 	//mesh.scale.set(5,5,5);
-	mesh.position.x = -50;
-	mesh.position.y = -25;
-	mesh.position.z = -20;
+	mesh.position.x = 120;
+	mesh.position.y = -30;
+	mesh.position.z = 0;
 	scene.add(mesh);
 	});
 	
