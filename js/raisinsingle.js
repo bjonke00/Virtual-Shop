@@ -29,7 +29,7 @@ function init() {
 	*/
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/raisinsingle.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
+	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
 	//mesh.scale.set(5,5,5);
 	mesh.position.x = -50;
 	mesh.position.y = -25;

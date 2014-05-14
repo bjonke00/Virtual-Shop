@@ -4,10 +4,17 @@ var camera, controls, scene, renderer;
 //mouseclick var
 var targetList = [];
 var projector, mouse = { x: 0, y: 0 };
-
+//item number code
+//0 = blue pringles
+//1 = red pringles
+//2 = green pringles
+//3 = frosted flakes
+//4 = raisin brand
+//5 = reeses cereal
+//6 = fruit loops 
 init();
 animate();
-window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/index.html");
+window.open("file:///C:/Users/Joel/Desktop/virtual-shop/index.html");
 function init() {
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);  //Camera Position
 	//camera.position.x =20;
@@ -341,7 +348,7 @@ function init() {
 	pr_green.position.z = -21;
 	scene.add(pr_green);
 	targetList.push(pr_green);
-	item=2;
+	pr_green.item=2;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringles.js", function(geometry){
@@ -352,6 +359,10 @@ function init() {
 	pr_green.position.y = -6.7;
 	pr_green.position.z = -21;
 	scene.add(pr_green);
+	pr_green.item=2;
+	//the above is a manual identifier to distinguish green pringles from everything else
+	//only needs to be put once per group of items. Ex: For all green pringles, the item code is 2.
+	//in order for the mouse click to work for the whole group, every item must enter the targetList array
 	targetList.push(pr_green);
 	});
 	var loader = new THREE.JSONLoader();
@@ -376,8 +387,10 @@ function init() {
 	pr_blue.position.y = -4.8;
 	pr_blue.position.z = -33;
 	scene.add(pr_blue);
+	//add to the array
 	targetList.push(pr_blue);
-	item =0;
+	//give blue pringles an item code
+	pr_blue.item = 0;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesbl.js", function(geometry){
@@ -388,6 +401,7 @@ function init() {
 	pr_blue.position.y = -4.8;
 	pr_blue.position.z = -34;
 	scene.add(pr_blue);
+	//add to the array
 	targetList.push(pr_blue);
 	});
 	var loader = new THREE.JSONLoader();
@@ -399,6 +413,7 @@ function init() {
 	pr_blue.position.y = -4.8;
 	pr_blue.position.z = -33;
 	scene.add(pr_blue);
+	//add to the array
 	targetList.push(pr_blue);
 	});	
 	
@@ -412,8 +427,10 @@ function init() {
 	pr_red.position.y = -5.8;
 	pr_red.position.z = -23;
 	scene.add(pr_red);
+	//add to the array
 	targetList.push(pr_red);
-	item =1;
+	//give red pringles an item code
+	pr_red.item = 1;
 	});
 		var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
@@ -424,6 +441,7 @@ function init() {
 	pr_red.position.y = -5.8;
 	pr_red.position.z = -23;
 	scene.add(pr_red);
+	//add to the array
 	targetList.push(pr_red);
 	});
 		var loader = new THREE.JSONLoader();
@@ -435,6 +453,7 @@ function init() {
 	pr_red.position.y = -5.8;
 	pr_red.position.z = -23;
 	scene.add(pr_red);
+	//add to the array
 	targetList.push(pr_red);
 	});
 	
@@ -447,6 +466,10 @@ function init() {
 	mesh.position.y = .8;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	//add to the array
+	targetList.push(mesh);
+	//give frosted flakes an item code
+	mesh.item = 3;
 	});
 	
 	var loader = new THREE.JSONLoader();
@@ -457,6 +480,8 @@ function init() {
 	mesh.position.y = .8;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	//add to the array
+	targetList.push(mesh);
 	});
 	
 	var loader = new THREE.JSONLoader();
@@ -467,6 +492,8 @@ function init() {
 	mesh.position.y = .8;
 	mesh.position.z = -30;
 	scene.add(mesh);
+	//add to the array
+	targetList.push(mesh);
 	});
 
 	//raisin brand
@@ -480,7 +507,10 @@ function init() {
 	r.position.y = -7;
 	r.position.z = -24;
 	scene.add(r);
-	//targetList.push(r);
+	//add to the array
+	targetList.push(r);
+	//give raisin brand an item code
+	r.item = 4;
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/raisin.js", function(geometry){
@@ -490,6 +520,8 @@ function init() {
 	mesh.position.y = -7;
 	mesh.position.z = -24;
 	scene.add(mesh);
+	//add to the array
+	targetList.push(mesh);
 	});
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/raisin.js", function(geometry){
@@ -499,6 +531,7 @@ function init() {
 	mesh.position.y = -7;
 	mesh.position.z = -24;
 	scene.add(mesh);
+	targetList.push(mesh);
 	});	
 	
 	/*
@@ -542,7 +575,7 @@ function init() {
 	//scene.add(shelfBack);
     
 */
-	
+	//Reeses Cereal
 	var Rboxes = new THREE.Geometry(); // Many Reeses boxes
 	var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example of Reeses box
 
@@ -564,10 +597,13 @@ function init() {
 	RboxesMesh.castShadow = false;
 	RboxesMesh.receiveShadow = true;
 	scene.add(RboxesMesh);
-	//targetList.push(RboxesMesh);
+	//add to array
+	targetList.push(RboxesMesh);
+	//give Rbox an item code
+	RboxesMesh.item = 5;
 
 	
-	
+	//Fruit Loops
 	var cereals = new THREE.Geometry();
 	var cereal = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) );
 	
@@ -590,6 +626,10 @@ function init() {
 	cerealsMesh.castShadow = false;
 	cerealsMesh.receiveShadow = true;
 	scene.add(cerealsMesh);
+	//add to the array
+	targetList.push(cerealsMesh);
+	//give fruit loops an item code
+	cerealsMesh.item = 6;
 
 
 //mouse
@@ -619,11 +659,11 @@ var sphere = new THREE.Mesh( sphereGeometry, faceColorMaterial );
 	light = new THREE.AmbientLight( "white" );
 	scene.add( light );
 
-	var light = new THREE.SpotLight("white");
-	light.position.set(-150,40,0);
-	light.castShadow = true;
-	light.shadowCameraVisible = false;
-	scene.add(light);
+	var light1 = new THREE.SpotLight("white");
+	light1.position.set(-150,40,0);
+	light1.castShadow = true;
+	light1.shadowCameraVisible = false;
+	scene.add(light1);
 	
 	var light2 = new THREE.SpotLight("white");
 	light2.position.set(150,40,0);
@@ -674,15 +714,21 @@ function onDocumentMouseUp( event )
 	// if there is one (or more) intersections
 	if ( intersects.length > 0 )
 	{
-		switch (item) {
+		//only care about the first object that intersects the ray, so we make that a variable of interest
+		var target = intersects[0].object;
+		switch (target.item) {
 			case 0:
-					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
 					break;
 			case 1:
-					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlesgr.html"); //red pringles
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlesgr.html"); //red pringles
 					break;
 			case 2:
-					window.open("file:///C:/Users/Benjamin/Desktop/virtual-shop/pringlessingle.html"); //green pringles
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlessingle.html"); //green pringles
+					break;
+			//case 3:
+			case 4:
+					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/raisin.html");  //raisin brand
 					break;
 		}
 		//console.log("Hit @ " + toString( intersects[0].point ) );
