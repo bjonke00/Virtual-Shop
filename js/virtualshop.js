@@ -1,7 +1,9 @@
+//virtualshop.js
+
 var container;
 var camera, controls, scene, renderer;
 
-//mouseclick var
+//mouseclick variables
 var targetList = [];
 var projector, mouse = { x: 0, y: 0 };
 //item number code
@@ -18,22 +20,28 @@ var projector, mouse = { x: 0, y: 0 };
 //10 = chips (orange)
 //11 = pretzels
 //12 = crackerjacks
+
 init();
 animate();
-//window.open("file:///C:/Users/Joel/Desktop/virtual-shop/index.html");
+//window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/index.html");
 
 function init() {
+	//camera view
 	camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);  //Camera Position
 	//camera.position.x =20;
 	camera.position.z =50;
 	camera.position.y = 15;
 	
+
+	//OrbitControls
 	controls = new THREE.OrbitControls( camera );
 	controls.addEventListener( 'change', render );
 	controls.target.set(7.625/2,0,0);
 	
+	//create scene
 	scene = new THREE.Scene();
 
+	//add flooring
 	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/browntile.jpg' );
 	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 	floorTexture.repeat.set( 100, 100 );
@@ -64,7 +72,9 @@ function init() {
 	mesh.position.y = -1.5;
 	mesh.position.z = -30;
 	scene.add(mesh);
-	});/*
+	});
+
+	/*
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/shelf.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
@@ -108,6 +118,9 @@ function init() {
 	object.position.y = -1.5;
 	object.position.z = -30;
 	scene.add(object)});*/
+
+
+	//shelves with color
 	var loader = new THREE.OBJMTLLoader();
 	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
 	object.scale.set(.5,.5,.5);
@@ -130,6 +143,7 @@ function init() {
 	object.position.z = -30;
 	scene.add(object)});
 	
+
 	//lays chips (red)
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysred.js", function(geometry){
@@ -176,6 +190,7 @@ function init() {
 	mesh.item=7;
 	});
 	
+
 	//lays blue
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/laysblue.js", function(geometry){
@@ -222,6 +237,7 @@ function init() {
 	mesh.item=8;
 	});
 	
+
 	//chips (black)
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/chipsblack.js", function(geometry){
@@ -268,6 +284,7 @@ function init() {
 	mesh.item=9;
 	});
 	
+
 	// chips (orange)
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/chipsorange.js", function(geometry){
@@ -303,6 +320,7 @@ function init() {
 	mesh.item=10;
 	});
 	
+
 	//pretzels
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pretzels.js", function(geometry){
@@ -338,6 +356,7 @@ function init() {
 	mesh.item=11;
 	});
 	
+
 	//Cracker Jacks
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/crackerjack.js", function(geometry){
@@ -362,6 +381,7 @@ function init() {
 	mesh.item=12;
 	});
 	
+
 	//pringles (green)
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringles.js", function(geometry){
@@ -402,6 +422,7 @@ function init() {
 	pr_green.item=2
 	});
 	
+
 	//pringles blue
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesbl.js", function(geometry){
@@ -444,6 +465,7 @@ function init() {
 	pr_blue.item = 0;
 	});	
 	
+
 	//pringles (red)
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
@@ -459,7 +481,7 @@ function init() {
 	//give red pringles an item code
 	pr_red.item = 1;
 	});
-		var loader = new THREE.JSONLoader();
+	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
 	pr_red = mesh;
@@ -472,7 +494,7 @@ function init() {
 	targetList.push(pr_red);
 	pr_red.item = 1;
 	});
-		var loader = new THREE.JSONLoader();
+	var loader = new THREE.JSONLoader();
 	loader.load("./objects/pringlesgr.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves4.jpg') }) );
 	pr_red = mesh;
@@ -486,6 +508,7 @@ function init() {
 	pr_red.item = 1;
 	});
 	
+
 	//frosted flakes
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/frosted.js", function(geometry){
@@ -500,7 +523,6 @@ function init() {
 	//give frosted flakes an item code
 	mesh.item = 3;
 	});
-	
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/frosted.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
@@ -513,7 +535,6 @@ function init() {
 	targetList.push(mesh);
 	mesh.item = 3;
 	});
-	
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/frosted.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
@@ -527,8 +548,8 @@ function init() {
 	mesh.item = 3;
 	});
 
-	//raisin brand
-	
+
+	//raisin brand	
 	var loader = new THREE.JSONLoader();
 	loader.load("./objects/raisin.js", function(geometry){
 	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('objects/shelves3.jpg') }) );
@@ -567,47 +588,7 @@ function init() {
 	mesh.item = 4;
 	});	
 	
-	/*
-	//Shelf Geometry
-	//lowest shelf on ground level
-	var shelfLowGeometry = new THREE.CubeGeometry(180, 1, 28);
-	var shelfLowMaterial = new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') });
-	var shelfLow = new THREE.Mesh(shelfLowGeometry, shelfLowMaterial);
-	//positioning shelf
-	shelfLow.position.set(0,0,-12);
-	//adding the shelf to the scene
-	//scene.add(shelfLow);
-	
-	//middle shelf
-	var shelfMidGeometry = new THREE.CubeGeometry(180, 1, 28);
-	//var shelfMidMaterial = new THREE.MeshBasicMaterial({color:0xCD853F});
-	var shelfMidMaterial = new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') });
-	var shelfMid = new THREE.Mesh(shelfMidGeometry, shelfMidMaterial);
-	//positioning shelf
-	shelfMid.position.set(0,13,-12);
-	//adding the shelf to the scene
-	//scene.add(shelfMid);
-	
-	//top shelf
-	var shelfTopGeometry = new THREE.CubeGeometry(180, 1, 28);
-	//var shelfTopMaterial = new THREE.MeshBasicMaterial({color:0xCD853F});
-	var shelfTopMaterial = new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') });
-	var shelfTop = new THREE.Mesh(shelfTopGeometry, shelfTopMaterial);
-	//positioning shelf
-	shelfTop.position.set(0,26,-12);
-	//adding the shelf to the scene
-	//scene.add(shelfTop);
 
-	//back part of shelf
-	var shelfBackGeometry = new THREE.CubeGeometry(180, 45, 1);//72
-	var shelfBackMaterial = new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') });
-	var shelfBack = new THREE.Mesh(shelfBackGeometry, shelfBackMaterial);
-	//positioning back piece
-	shelfBack.position.set(0, 20, -27);
-	//adding the shelf to the scene
-	//scene.add(shelfBack);
-    
-*/
 	//Reeses Cereal
 	var Rboxes = new THREE.Geometry(); // Many Reeses boxes
 	var Rbox = new THREE.Mesh( new THREE.CubeGeometry(7.625,11,2.75) ); //1 example of Reeses box
@@ -665,23 +646,7 @@ function init() {
 	cerealsMesh.item = 6;
 
 
-//mouse
-/*
-var faceColorMaterial = new THREE.MeshBasicMaterial( 
-	{ color: 0xffffff, vertexColors: THREE.FaceColors } );
-	
-	var sphereGeometry = new THREE.SphereGeometry( 80, 32, 16 );
-	for ( var i = 0; i < sphereGeometry.faces.length; i++ ) 
-	{
-		face = sphereGeometry.faces[ i ];	
-		face.color.setRGB( 0, 0, 0.8 * Math.random() + 0.2 );		
-	}
-var sphere = new THREE.Mesh( sphereGeometry, faceColorMaterial );
-	sphere.position.set(0, 10, -25);
-	scene.add(sphere);
-*/	
-	//targetList.push(r);
-	
+	// for mouse
 	// initialize object to perform world/screen calculations
 	projector = new THREE.Projector();
 	
@@ -726,6 +691,7 @@ var sphere = new THREE.Mesh( sphereGeometry, faceColorMaterial );
 	container.appendChild( stats.domElement );
 
 }
+
 //mouse function
 function onDocumentMouseUp( event ) 
 {
@@ -751,50 +717,46 @@ function onDocumentMouseUp( event )
 		var target = intersects[0].object;
 		switch (target.item) {
 			case 0:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlesbl.html"); //blue pringles
+    				window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesbl.html"); 		//blue pringles
 					break;
 			case 1:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlesgr.html"); //red pringles
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesgr.html"); 		//red pringles
 					break;
 			case 2:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pringlessingle.html"); //green pringles
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlessingle.html"); 	//green pringles
 					break;
 			case 3:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/frosted.html");  //frosted flakes
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/frosted.html");  			//frosted flakes
 					break;
 			case 4:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/raisin.html");  //raisin brand
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/raisin.html"); 			//raisin brand
 					break;
 			case 5:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/reeses.html");  //reeses cereal
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/reeses.html");			//reeses cereal
 					break;
 			case 6:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/fruitloops.html");  //fruit loops 
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/fruitloops.html");		//fruit loops 
 					break;
 			case 7:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/laysred.html");  //red lays
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/laysred.html");			//red lays
 					break;
 			case 8:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/laysblue.html");  //blue lays
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/laysblue.html");			//blue lays
 					break;
 			case 9:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/chipsblack.html");  //black chips
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/chipsblack.html");		//black chips
 					break;
 			case 10:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/chipsorange.html");  //orange chips
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/chipsorange.html");		//orange chips
 					break;
 			case 11:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/pretzelsingle.html");  //pretzel bag
+					window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pretzelsingle.html"); 	//pretzel bag
 					break;
 			case 12:
-					window.open("file:///C:/Users/Joel/Desktop/virtual-shop/crackerjack.html");  //cracker jacks
+						window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/crackerjack.html");	//cracker jacks
 					break;
 		}
-		//console.log("Hit @ " + toString( intersects[0].point ) );
 		
-		// change the color of the closest face.
-		//intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
-		//intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
 	}
 
 }
