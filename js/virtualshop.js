@@ -73,52 +73,7 @@ function init() {
 	mesh.position.z = -30;
 	scene.add(mesh);
 	});
-
-	/*
-	var loader = new THREE.JSONLoader();
-	loader.load("./objects/shelf.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 0;
-	mesh.position.y = -1.5;
-	mesh.position.z = -30;
-	scene.add(mesh);
-	});
-	var loader = new THREE.JSONLoader();
-	loader.load("./objects/shelf.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 35;
-	mesh.position.y = -1.5;
-	mesh.position.z = -30;
-	scene.add(mesh);
-	});
-	var loader = new THREE.JSONLoader();
-	loader.load("./objects/shelf.js", function(geometry){
-	var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: loadAndRender('images/wood2.jpg') }) );
-	mesh.scale.set(.5,.5,.5);
-	mesh.position.x = 70;
-	mesh.position.y = -1.5;
-	mesh.position.z = -30;
-	scene.add(mesh);
-	});*/
 	
-	//objmtloader to load one isle
-/*	var loader = new THREE.OBJMTLLoader();
-	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
-	object.scale.set(.5,.5,.5);
-	object.position.x = -70;
-	object.position.y = -1.5;
-	object.position.z = -30;
-	scene.add(object)});
-	var loader = new THREE.OBJMTLLoader();
-	loader.load("./objects/shelf2.obj","./objects/shelf2.mtl",function(object){
-	object.scale.set(.5,.5,.5);
-	object.position.x = -35;
-	object.position.y = -1.5;
-	object.position.z = -30;
-	scene.add(object)});*/
-
 
 	//shelves with color
 	var loader = new THREE.OBJMTLLoader();
@@ -675,7 +630,6 @@ function init() {
 	else
 		alert("No WebGL support detected");
 
-	//renderer = new THREE.WebGLRenderer( { antialias: true } );
 	renderer.setClearColor( "black", 1 );
   	renderer.setSize( window.innerWidth, window.innerHeight );
   	renderer.shadowMapEnabled = true;
@@ -695,10 +649,6 @@ function init() {
 //mouse function
 function onDocumentMouseUp( event ) 
 {
-	// the following line would stop any other event handler from firing
-	// (such as the mouse's TrackballControls)
-	// event.preventDefault();
-	console.log("Click.");
 	// update the mouse variable
 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
@@ -715,6 +665,8 @@ function onDocumentMouseUp( event )
 	{
 		//only care about the first object that intersects the ray, so we make that a variable of interest
 		var target = intersects[0].object;
+		
+		//different cases for each item clicked on Note:must change directory on different computer (not actual website)
 		switch (target.item) {
 			case 0:
     				window.open("file:///C:/Users/Lenovo/Desktop/virtual-shop/pringlesbl.html"); 		//blue pringles
